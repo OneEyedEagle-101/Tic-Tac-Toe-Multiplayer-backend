@@ -4,6 +4,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 app.use(cors());
+const port = process.env.PORT;
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
@@ -149,6 +150,6 @@ io.on("connection", (socket) => {
   //socket.to(gameObject.roomId).emit("starting-game");
 });
 
-server.listen(8000, () => {
-  console.info("Server started on 8000");
+server.listen(port, () => {
+  console.info("Server started on ${port}");
 });

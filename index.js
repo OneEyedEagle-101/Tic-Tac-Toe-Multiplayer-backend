@@ -44,11 +44,11 @@ io.on("connection", (socket) => {
     hash.set(gameObject.roomId, gameObject);
     const sign = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
     if (sign == 1) {
-      hash.get(roomId).player1Sign = "x";
-      hash.get(roomId).player2Sign = "o";
+      hash.get(roomId).player1Sign = "X";
+      hash.get(roomId).player2Sign = "O";
     } else {
-      hash.get(roomId).player2Sign = "x";
-      hash.get(roomId).player1Sign = "o";
+      hash.get(roomId).player2Sign = "X";
+      hash.get(roomId).player1Sign = "O";
     }
     const firstToPlay = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
     if (firstToPlay == 1) {
@@ -82,63 +82,63 @@ io.on("connection", (socket) => {
   socket.on("played", ({ gameArr, roomId }) => {
     hash.get(roomId).gameArray = gameArr;
     if (
-      (hash.get(roomId).gameArray[0] == "x" &&
-        hash.get(roomId).gameArray[1] == "x" &&
-        hash.get(roomId).gameArray[2] == "x") ||
-      (hash.get(roomId).gameArray[3] == "x" &&
-        hash.get(roomId).gameArray[4] == "x" &&
-        hash.get(roomId).gameArray[5] == "x") ||
-      (hash.get(roomId).gameArray[6] == "x" &&
-        hash.get(roomId).gameArray[7] == "x" &&
-        hash.get(roomId).gameArray[8] == "x") ||
-      (hash.get(roomId).gameArray[0] == "x" &&
-        hash.get(roomId).gameArray[3] == "x" &&
-        hash.get(roomId).gameArray[6] == "x") ||
-      (hash.get(roomId).gameArray[1] == "x" &&
-        hash.get(roomId).gameArray[4] == "x" &&
-        hash.get(roomId).gameArray[7] == "x") ||
-      (hash.get(roomId).gameArray[2] == "x" &&
-        hash.get(roomId).gameArray[5] == "x" &&
-        hash.get(roomId).gameArray[8] == "x") ||
-      (hash.get(roomId).gameArray[0] == "x" &&
-        hash.get(roomId).gameArray[4] == "x" &&
-        hash.get(roomId).gameArray[8] == "x") ||
-      (hash.get(roomId).gameArray[2] == "x" &&
-        hash.get(roomId).gameArray[4] == "x" &&
-        hash.get(roomId).gameArray[6] == "x")
+      (hash.get(roomId).gameArray[0] == "X" &&
+        hash.get(roomId).gameArray[1] == "X" &&
+        hash.get(roomId).gameArray[2] == "X") ||
+      (hash.get(roomId).gameArray[3] == "X" &&
+        hash.get(roomId).gameArray[4] == "X" &&
+        hash.get(roomId).gameArray[5] == "X") ||
+      (hash.get(roomId).gameArray[6] == "X" &&
+        hash.get(roomId).gameArray[7] == "X" &&
+        hash.get(roomId).gameArray[8] == "X") ||
+      (hash.get(roomId).gameArray[0] == "X" &&
+        hash.get(roomId).gameArray[3] == "X" &&
+        hash.get(roomId).gameArray[6] == "X") ||
+      (hash.get(roomId).gameArray[1] == "X" &&
+        hash.get(roomId).gameArray[4] == "X" &&
+        hash.get(roomId).gameArray[7] == "X") ||
+      (hash.get(roomId).gameArray[2] == "X" &&
+        hash.get(roomId).gameArray[5] == "X" &&
+        hash.get(roomId).gameArray[8] == "X") ||
+      (hash.get(roomId).gameArray[0] == "X" &&
+        hash.get(roomId).gameArray[4] == "X" &&
+        hash.get(roomId).gameArray[8] == "X") ||
+      (hash.get(roomId).gameArray[2] == "X" &&
+        hash.get(roomId).gameArray[4] == "X" &&
+        hash.get(roomId).gameArray[6] == "X")
     ) {
-      if (hash.get(roomId).player1Sign == "x") {
+      if (hash.get(roomId).player1Sign == "X") {
         hash.get(roomId).isPlayer1winner = true;
       } else {
         hash.get(roomId).isPlayer2winner = true;
       }
     } else if (
-      (hash.get(roomId).gameArray[0] == "o" &&
-        hash.get(roomId).gameArray[1] == "o" &&
-        hash.get(roomId).gameArray[2] == "o") ||
-      (hash.get(roomId).gameArray[3] == "o" &&
-        hash.get(roomId).gameArray[4] == "o" &&
-        hash.get(roomId).gameArray[5] == "o") ||
-      (hash.get(roomId).gameArray[6] == "o" &&
-        hash.get(roomId).gameArray[7] == "o" &&
-        hash.get(roomId).gameArray[8] == "o") ||
-      (hash.get(roomId).gameArray[0] == "o" &&
-        hash.get(roomId).gameArray[3] == "o" &&
-        hash.get(roomId).gameArray[6] == "o") ||
-      (hash.get(roomId).gameArray[1] == "o" &&
-        hash.get(roomId).gameArray[4] == "o" &&
-        hash.get(roomId).gameArray[7] == "o") ||
-      (hash.get(roomId).gameArray[2] == "o" &&
-        hash.get(roomId).gameArray[5] == "o" &&
-        hash.get(roomId).gameArray[8] == "o") ||
-      (hash.get(roomId).gameArray[0] == "o" &&
-        hash.get(roomId).gameArray[4] == "o" &&
-        hash.get(roomId).gameArray[8] == "o") ||
-      (hash.get(roomId).gameArray[2] == "o" &&
-        hash.get(roomId).gameArray[4] == "o" &&
-        hash.get(roomId).gameArray[6] == "o")
+      (hash.get(roomId).gameArray[0] == "O" &&
+        hash.get(roomId).gameArray[1] == "O" &&
+        hash.get(roomId).gameArray[2] == "O") ||
+      (hash.get(roomId).gameArray[3] == "O" &&
+        hash.get(roomId).gameArray[4] == "O" &&
+        hash.get(roomId).gameArray[5] == "O") ||
+      (hash.get(roomId).gameArray[6] == "O" &&
+        hash.get(roomId).gameArray[7] == "O" &&
+        hash.get(roomId).gameArray[8] == "O") ||
+      (hash.get(roomId).gameArray[0] == "O" &&
+        hash.get(roomId).gameArray[3] == "O" &&
+        hash.get(roomId).gameArray[6] == "O") ||
+      (hash.get(roomId).gameArray[1] == "O" &&
+        hash.get(roomId).gameArray[4] == "O" &&
+        hash.get(roomId).gameArray[7] == "O") ||
+      (hash.get(roomId).gameArray[2] == "O" &&
+        hash.get(roomId).gameArray[5] == "O" &&
+        hash.get(roomId).gameArray[8] == "O") ||
+      (hash.get(roomId).gameArray[0] == "O" &&
+        hash.get(roomId).gameArray[4] == "O" &&
+        hash.get(roomId).gameArray[8] == "O") ||
+      (hash.get(roomId).gameArray[2] == "O" &&
+        hash.get(roomId).gameArray[4] == "O" &&
+        hash.get(roomId).gameArray[6] == "O")
     ) {
-      if (hash.get(roomId).player1Sign == "o") {
+      if (hash.get(roomId).player1Sign == "O") {
         hash.get(roomId).isPlayer1winner = true;
       } else {
         hash.get(roomId).isPlayer2winner = true;

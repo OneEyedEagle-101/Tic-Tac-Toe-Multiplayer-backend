@@ -4,7 +4,6 @@ const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 app.use(cors());
-const port = process.env.PORT;
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
@@ -15,7 +14,7 @@ io.on("connection", (socket) => {
     roomId: "",
     player1Name: "",
     player2Name: "",
-    gameArray: [ "\u00A0",
+    gameArray: [
       "\u00A0",
       "\u00A0",
       "\u00A0",
@@ -23,7 +22,9 @@ io.on("connection", (socket) => {
       "\u00A0",
       "\u00A0",
       "\u00A0",
-      "\u00A0"],
+      "\u00A0",
+      "\u00A0",
+    ],
     player1Sign: "",
     player2Sign: "",
     player1Turn: false,
@@ -59,9 +60,11 @@ io.on("connection", (socket) => {
     console.log(hash.get(roomId));
     io.to(socket.id).emit("room-created", gameObject);
   });
-
+  socket.on("reconnect", (roomId) => {
+    socket.join(roomId);
+  });
   socket.on("joining-room", async ({ username, roomId }) => {
-    if ((await io.in(roomId).fetchSockets()).length >= 1) {
+    if ((await io.in(roomId).fetchSockets()).length == 1) {
       socket.join(roomId);
       hash.get(roomId).player2Name = username;
       hash.get(roomId).player2socketId = socket.id;
@@ -158,6 +161,6 @@ io.on("connection", (socket) => {
   //socket.to(gameObject.roomId).emit("starting-game");
 });
 
-server.listen(port, () => {
-  console.info("Server started on ${port}");
+server.listen(8000, () => {
+  console.info("Server started on 8000");
 });

@@ -61,6 +61,7 @@ io.on("connection", (socket) => {
     io.to(socket.id).emit("room-created", gameObject);
   });
   socket.on("reconnect", (roomId) => {
+    console.log('reconnect called');
     socket.join(roomId);
   });
   socket.on("joining-room", async ({ username, roomId }) => {

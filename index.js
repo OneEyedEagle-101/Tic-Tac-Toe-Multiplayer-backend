@@ -58,6 +58,7 @@ io.on("connection", (socket) => {
       hash.get(roomId).player2Turn = true;
     }
     console.log(hash.get(roomId));
+     console.log(await io.in(roomId).fetchSockets());
     io.to(socket.id).emit("room-created", gameObject);
   });
   socket.on("reconnect", (roomId) => {

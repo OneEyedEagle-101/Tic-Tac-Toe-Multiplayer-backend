@@ -65,6 +65,8 @@ io.on("connection", (socket) => {
     socket.join(roomId);
   });
   socket.on("joining-room", async ({ username, roomId }) => {
+    console.log("Joining room")
+    console.log(await io.in(roomId).fetchSockets());
     if ((await io.in(roomId).fetchSockets()).length == 1) {
       socket.join(roomId);
       hash.get(roomId).player2Name = username;
